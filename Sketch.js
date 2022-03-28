@@ -2,7 +2,7 @@ let pixelSize;
 let x = pixelSize;
 let y = pixelSize;
 let windowSize; 
-let pixelBits = 8;// change this to "PixelSize *24" for 24x24 canvas
+let pixelBits = 8;// change this to "pixelBits = 24" for 24x24 canvas
 
 // colors HSB
 let h;
