@@ -21,6 +21,7 @@ function setup() {
    //pixelSize = 1;// Uncomment - Change this to "1" to scale down for uploading to 8bidou when finished
    canvasSize = pixelSize * pixelBits;
    createCanvas(canvasSize, canvasSize);
+   background(0, 0, 0);
    
    x = pixelSize;
    y = pixelSize;
