@@ -1,23 +1,42 @@
-let x = 0;
-let y = 0;
-let PixelSize = 100; // Change this to "1" to scale down for uploading when finished
-let x1 = PixelSize;
-let y1 = PixelSize;
-let w = PixelSize * 8;  // change this to "PixelSize *24" for 24x24 canvas
+let pixelSize;
+let x = pixelSize;
+let y = pixelSize;
+let windowSize; 
+let pixelBits = 8;// change this to "PixelSize *24" for 24x24 canvas
+
+// colors HSB
+let h;
+let s;
+let b;
+
+let canvasSize;
 
 function setup() {
-  createCanvas(w, w);
-  background(255);
-  noStroke();
+   canvasSize = min(windowWidth, windowHeight);
+   
+   colorMode(HSB);
+   noStroke();
+   
+   pixelSize = canvasSize/pixelBits; 
+   //pixelSize = 1;// Uncomment - Change this to "1" to scale down for uploading to 8bidou when finished
+   canvasSize = pixelSize * pixelBits;
+   createCanvas(canvasSize, canvasSize);
+   
+   x = pixelSize;
+   y = pixelSize;
+   windowSize = pixelSize * pixelBits;
+   
+   drawPixel();
 }
 
-function draw() {
-  fill(random(255));
-  rect(x, y, x1, y1);
-  x = x + PixelSize;
-
-  if (x > width) {
-    x = 0;
-    y = y + PixelSize;
-  }
+function drawPixel() {
+   for(let i = 0; i < windowSize; i=i+pixelSize) {
+      for(let j = 0; j < windowSize; j = j + pixelSize) {
+         h = random(0,360);
+         s = random(0,100); // 0 for grayscale
+         b = random(0,100);
+         fill(h,s,b);
+         rect(i, j, x, y);
+      }
+   }
 }
